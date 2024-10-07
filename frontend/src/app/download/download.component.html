@@ -1,0 +1,43 @@
+<app-logout></app-logout>
+
+<div class="container">
+  <h1>Download de Vídeo do YouTube</h1>
+
+  <input type="text" [(ngModel)]="videoLink" placeholder="Insira o link do vídeo" class="form-control" />
+
+  <button (click)="downloadVideo()" class="btn btn-primary mt-2" [disabled]="downloadInProgress">
+    {{ downloadInProgress ? 'Baixando...' : 'Baixar MP3' }}
+  </button>
+
+  <button (click)="cancelDownload()" class="btn btn-danger mt-2" [disabled]="!downloadInProgress">
+    Cancelar Download
+  </button>
+  
+  <button (click)="loadMp3Files()" class="btn btn-danger mt-2" >
+    Atualizar
+  </button>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<div class="container">
+  <h2>Lista de Arquivos MP3</h2>
+
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+<ul>
+  <li *ngFor="let file of mp3Files">
+    <span>{{ file }}</span>
+    <audio controls>
+      <source [src]="'http://localhost:5000/download/' + file" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <button (click)="downloadFile(file)">Baixar</button>
+  </li>
+</ul>
+
+  <div *ngIf="mp3Files.length === 0">
+    <p>Nenhum arquivo MP3 encontrado.</p>
+  </div>
+</div>

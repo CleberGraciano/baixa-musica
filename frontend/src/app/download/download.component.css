@@ -1,0 +1,9 @@
+.download-link a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .download-link button {
+    margin-top: 10px;
+  }
+  

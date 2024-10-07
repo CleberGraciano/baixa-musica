@@ -1,0 +1,14 @@
+<div>
+    <h2>Minhas Playlists</h2>
+    <input [(ngModel)]="newPlaylistName" placeholder="Nome da nova playlist" />
+    <button (click)="createPlaylist()">Criar Playlist</button>
+  
+    <div *ngIf="message">{{ message }}</div>
+  
+    <ul>
+      <li *ngFor="let playlist of playlists">
+        {{ playlist.name }}
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,10 @@
+<!-- register.component.html -->
+<div>
+    <h2>Registrar</h2>
+    <input [(ngModel)]="username" placeholder="Nome de usuário" />
+    <input [(ngModel)]="password" type="password" placeholder="Senha" />
+    <button (click)="register()">Registrar</button>
+    <div *ngIf="message">{{ message }}</div>
+  </div>
+  
+  <button (click)="voltar()">Login</button>
